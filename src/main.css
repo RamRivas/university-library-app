@@ -1,0 +1,26 @@
+body, html {
+  height: 100%;
+}
+.bg {
+  background-image: url("./assets/campus.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.centeredChild {
+  position: absolute;
+  transform: translate(50%, -50%);
+  top: 50%;
+  right: 50%;
+}
+
+.fatherOfCenteredChilds {
+  position: relative;
+}
+
+.centeredOrphan {
+  justify-self: center !important;
+  align-self: center !important;
+}
