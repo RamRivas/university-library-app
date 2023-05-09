@@ -25,7 +25,7 @@ export const axiosPrivate = axios.create({
 
 axiosPrivate.interceptors.request.use(
     async (config) => {
-        const token = localStorage.access_token;
+        const token = localStorage.getItem('access_token');
         if (token) {
             config.headers["Authorization"] = ` bearer ${token}`;
         }
@@ -49,7 +49,7 @@ axiosPrivate.interceptors.response.use(
             
             const access_token = resp.response.accessToken;
                 
-            localStorage.access_token = access_token;
+            localStorage.setItem('access_token', access_token);
             axiosPrivate.defaults.headers.common[
                 "Authorization"
             ] = `Bearer ${access_token}`;

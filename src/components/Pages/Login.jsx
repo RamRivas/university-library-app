@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Card from "./Card";
-import axios from "axios";
-import { BACKEND_BASE_URL } from "../../config";
+import Card from "../Card/Card";
+import axios from "../../api/axios";
 
-const LoginCard = () => {
+const Login = () => {
     const [data, setData] = useState({
         email: '',
         pwd: ''
@@ -18,7 +17,7 @@ const LoginCard = () => {
     const login = async e => {
         e.preventDefault();
         
-        const result = await axios.post(`${BACKEND_BASE_URL}/login`, data);
+        const result = await axios.post('/login', data);
         console.log(result);
     }
     
@@ -77,4 +76,4 @@ const LoginCard = () => {
     return <Card {...props} />
 }
 
-export default LoginCard;
+export default Login;

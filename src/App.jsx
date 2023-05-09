@@ -1,11 +1,12 @@
-import LoginCard from './components/Card/LoginCard';
+import Page from './components/Pages/Page';
+import Router from './router';
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div className="bg fatherOfCenteredChilds">
-      <LoginCard/>
+    <div className="bg">
+      <Router><Page/></Router>
     </div>
   );
 }
