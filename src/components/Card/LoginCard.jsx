@@ -1,6 +1,27 @@
+import { useState } from "react";
 import Card from "./Card";
+import axios from "axios";
+import { BACKEND_BASE_URL } from "../../config";
 
 const LoginCard = () => {
+    const [data, setData] = useState({
+        email: '',
+        pwd: ''
+    });
+
+    const handle = e => {
+        const newData = {...data};
+        newData[e.target.id] = e.target.value;
+        setData(newData);
+    };
+
+    const login = async e => {
+        e.preventDefault();
+        
+        const result = await axios.post(`${BACKEND_BASE_URL}/login`, data);
+        console.log(result);
+    }
+    
     const props = {
         cardType: 1,
         title: 'Welcome to ULib',
@@ -17,7 +38,9 @@ const LoginCard = () => {
                     },
                     input: {
                         type: 'email',
-                        id: 'loginEmail'
+                        id: 'email',
+                        value: data.email,
+                        onChange: e => handle(e)
                     }
                 },
                 {
@@ -27,7 +50,9 @@ const LoginCard = () => {
                     },
                     input: {
                         type: 'password',
-                        id: 'loginPassword'
+                        id: 'pwd',
+                        value: data.pwd,
+                        onChange: e => handle(e)
                     }
                 }
             ],
@@ -35,7 +60,8 @@ const LoginCard = () => {
                 {
                     internalButtonType: 0,
                     text: 'Log in',
-                    className: 'btn-primary centeredOrphan'
+                    className: 'btn-primary centeredOrphan',
+                    onClick: e => login(e)
                 }
             ],
             style: {
@@ -44,7 +70,7 @@ const LoginCard = () => {
         },
         className: 'centeredChild',
         style: {
-            width: 18 + 'rem'
+            width: 20 + 'rem'
         }
     };
 

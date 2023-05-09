@@ -6,11 +6,11 @@ const TextField = props => {
 
     label.for = input.id;
     label.labelType = 0;
-    input.internalInputType = 0;
+    const internalInputType = 0;
     
     return <div className="mb-3">
         <Label {...label}/>
-        <Input {...input}/>
+        <Input internalInputType={internalInputType} input={input}/>
     </div>
 }
 
