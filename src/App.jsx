@@ -1,12 +1,17 @@
-import Page from './components/Pages/Page';
 import Router from './router';
+import NavBar from './components/Pages/NavBar';
+import { BrowserRouter } from 'react-router-dom';
+
 
 function App() {
   // const [count, setCount] = useState(0)
-
+  
   return (
     <div className="bg">
-      <Router><Page/></Router>
+      <BrowserRouter>
+        <Router/>
+        <NavBar/>
+      </BrowserRouter>
     </div>
   );
 }
